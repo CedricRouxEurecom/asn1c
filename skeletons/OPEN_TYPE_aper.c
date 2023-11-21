@@ -53,7 +53,8 @@ OPEN_TYPE_aper_get(const asn_codec_ctx_t *opt_codec_ctx,
         (char *)*memb_ptr2
         + elm->type->elements[selected.presence_index - 1].memb_offset;
 
-    rv = aper_open_type_get(opt_codec_ctx, selected.type_descriptor, NULL,
+    rv = aper_open_type_get(opt_codec_ctx, selected.type_descriptor,
+                            elm->type->elements[selected.presence_index - 1].encoding_constraints.per_constraints,
                             &inner_value, pd);
     switch(rv.code) {
     case RC_OK:
