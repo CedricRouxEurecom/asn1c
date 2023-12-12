@@ -168,7 +168,7 @@ CHOICE_encode_aper(const asn_TYPE_descriptor_t *td,
         asn_enc_rval_t rval = {0,0,0};
         if(specs->ext_start == -1)
             ASN__ENCODE_FAILED;
-        if(aper_put_nsnnwn(po, ct ? ct->range_bits : 0, present - specs->ext_start))
+        if(aper_put_nsnnwn(po, present - specs->ext_start))
             ASN__ENCODE_FAILED;
         if(aper_open_type_put(elm->type, elm->encoding_constraints.per_constraints,
                               memb_ptr, po))

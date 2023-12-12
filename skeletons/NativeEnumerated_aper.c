@@ -148,9 +148,7 @@ NativeEnumerated_encode_aper(const asn_TYPE_descriptor_t *td,
     ASN_DEBUG("value = %ld, ext = %d, inext = %d, res = %ld",
               value, specs->extension, inext,
               value - (inext ? (specs->extension - 1) : 0));
-    if(aper_put_nsnnwn(po,
-                       ct->upper_bound - ct->lower_bound + 1,
-                       value - (inext ? (specs->extension - 1) : 0)))
+    if(aper_put_nsnnwn(po, value - (inext ? (specs->extension - 1) : 0)))
         ASN__ENCODE_FAILED;
 
     ASN__ENCODED_OK(er);

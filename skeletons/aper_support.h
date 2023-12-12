@@ -30,6 +30,11 @@ ssize_t aper_get_nslength(asn_per_data_t *pd);
 ssize_t aper_get_nsnnwn(asn_per_data_t *pd, int range);
 
 /*
+ * Get the constrained whole number.
+ */
+long aper_get_cwn(asn_per_data_t *po, long lb, long ub);
+
+/*
  * X.691 (08/2015) #11.9 "General rules for encoding a length determinant"
  * Put the length "n" to the Aligned PER stream.
  * If (opt_need_eom) is given, it will be set to 1 if final 0-n is needed.
@@ -54,7 +59,12 @@ int aper_put_nslength(asn_per_outp_t *po, size_t length);
 /*
  * Put the normally small non-negative whole number.
  */
-int aper_put_nsnnwn(asn_per_outp_t *po, int range, int number);
+int aper_put_nsnnwn(asn_per_outp_t *po, int number);
+
+/*
+ * Put the constrained whole number.
+ */
+int aper_put_cwn(asn_per_outp_t *po, long lb, long ub, long number);
 
 #ifdef __cplusplus
 }
